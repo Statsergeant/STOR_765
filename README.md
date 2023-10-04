@@ -1,8 +1,8 @@
 # STOR_765_911_calls_ Detroit
 
+Thanks for all the informations! ^^
 
-
-
+Meeting note : [Behavioral Health 911 Calls Notes - Google Docs](https://docs.google.com/document/d/18fq7AWVNhskYoM3dm362KyvO4PeQoHaOWQn040oQyCA/edit)
 
 1. In the attached zip file, you will find:
 
