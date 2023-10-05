@@ -1,0 +1,105 @@
+---
+title: "Data analysis for detroit"
+date: "Last compiled on `r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r, include= F}
+Sys.getenv("HOME")
+
+library(tidyverse)
+library(ggplot2)
+library(sf)
+```
+
+# Stat_consulting_76 with Anna Bauer and Geo Jeong
+
+### 1. Exploration Data Analysis
+
+```{r, include = F}
+## loading the data.
+
+knitr::opts_chunk$set(warning = FALSE) 
+data <- read_csv('Detroit_with_census.csv')
+```
+
+```
+The raw data for Detroit has 1923012 rows and 51 columns. To understand the variables, we should reference link : [census_data_911](https://github.com/tsdataclinic/Vera)
+```
+
+#### 1. Let's see the number of call_type with bar plot
+```{r, include=F}
+knitr::opts_chunk$set(warning = FALSE) 
+data_table <- table(data$call_type) %>% as.data.frame()
+
+ggplot(data_table,aes(x=Var1,y = Freq)) + geom_bar(stat = 'identity') + theme(axis.text.x = element_text(angle=90, vjust = 0.5 , hjust =1)) + labs(title= 'Call_type vs Freq') + xlab('Call_type')
+
+```
+
+```{r ,echo = F}
+# Because of Complaints/Enviromental Conditions column, it doesn't look good. I will change this into CEC
+knitr::opts_chunk$set(warning = FALSE) 
+data_table$Var1[data_table$Var1 == 'Complaints/Environmental Conditions'] <- 'CEC'
+
+ggplot(data_table,aes(x=Var1,y = Freq)) + geom_bar(stat = 'identity',fill = 'blue') + theme(axis.text.x = element_text(angle=90, vjust = 0.5 , hjust =1)) + labs(title= 'Call_type vs Freq') + xlab('Call_type')
+
+```
+
+```
+Based on the graph, We can see the variance of the number of calls by call_types. There were many NA datas, so to do the analysis corretly, I need the exact dataset, which I will receive from Anna. 
+```
+
+
+### 2. Analysis
+
+#### The first goal of this analysis is to find out if there is differences of the number of calls, which will be decided by the actual dataset, throughout weekly, month, hours. To see the differnce, I will show the histogram first and do the analysis.
+
+```{r, echo= F}
+# Let's go with Monthly
+data_bar_month <- data %>% 
+  group_by(month) %>% 
+  summarise(sum = n())
+
+month_name <- c('Jan', 'Feb', 'Mar', 'Apr', "May", 'Jun', 
+            'Jul','Aug', 'Sep','Oct','Novr','Dec')
+
+data_bar_month <- cbind(data_bar_month, month_name) %>% as.data.frame()
+
+# This time weekday
+
+data_bar_weekday <- data %>% 
+  group_by(day_of_week) %>% 
+  summarize(sum = n())
+
+week<- c('Sun','Mon','Tues', 'Wedn', 'Thur','Fri', 'Sat')
+
+data_bar_weekday <- cbind(data_bar_weekday, week) %>% as.data.frame()
+
+# hourly
+data_bar_hour <- data %>% 
+  group_by(hour) %>% 
+  summarize(sum = n())
+
+
+
+```
+```{r setup, echo =F, out.width = '50%',fig.show = 'hold'}
+knitr::opts_chunk$set(echo = TRUE)
+plot_month <- ggplot(data_bar_month, aes(x = factor(month_name),y = sum)) + geom_bar(stat= 'identity', fill = 'green') + labs(title = 'The bar graph of the number of call by monthly') + xlab(label = 'Month') + ylab(label = 'The number')
+
+plot_weekday <- ggplot(data_bar_weekday, aes(x = factor(week),y = sum)) + geom_bar(stat= 'identity', fill = 'red') + labs(title = 'The bar graph of the number of call by weekday') + xlab(label = 'Weekday') + ylab(label = 'The number')
+
+plot_hour <- ggplot(data_bar_hour, aes(x = factor(hour),y = sum)) + geom_bar(stat= 'identity', fill = 'Yellow') + labs(title = 'The bar graph of the number of call by hour') + xlab(label = 'Hourly') + ylab(label = 'The number')
+
+plot_month
+plot_weekday
+plot_hour
+```
+
+```
+There are three plots and we can easily tell that, accroding to th e plot, the difference of the number of calls is the most distingishable in hourly plots. We can assume that the hypothesis 'H0: there is no difference' would be rejected.
+```
+
+
