@@ -1,7 +1,7 @@
 ---
 title: "Data analysis for detroit"
-date: "Last compiled on `r format(Sys.time(), '%d %B, %Y')`"
 output:
+  github_document:
   html_document:
     df_print: paged
 ---
@@ -14,9 +14,9 @@ library(ggplot2)
 library(sf)
 ```
 
-# Stat_consulting_76 with Anna Bauer and Geo Jeong
+## Stat_consulting_76 with Anna Bauer and Geo Jeong
 
-### 1. Exploration Data Analysis
+### Exploration Data Analysis
 
 ```{r, include = F}
 ## loading the data.
@@ -25,9 +25,9 @@ knitr::opts_chunk$set(warning = FALSE)
 data <- read_csv('Detroit_with_census.csv')
 ```
 
-```
+
 The raw data for Detroit has 1923012 rows and 51 columns. To understand the variables, we should reference link : [census_data_911](https://github.com/tsdataclinic/Vera)
-```
+
 
 #### 1. Let's see the number of call_type with bar plot
 ```{r, include=F}
@@ -47,14 +47,13 @@ ggplot(data_table,aes(x=Var1,y = Freq)) + geom_bar(stat = 'identity',fill = 'blu
 
 ```
 
-```
 Based on the graph, We can see the variance of the number of calls by call_types. There were many NA datas, so to do the analysis corretly, I need the exact dataset, which I will receive from Anna. 
-```
+
 
 
 ### 2. Analysis
 
-#### The first goal of this analysis is to find out if there is differences of the number of calls, which will be decided by the actual dataset, throughout weekly, month, hours. To see the differnce, I will show the histogram first and do the analysis.
+The first goal of this analysis is to find out if there is differences of the number of calls, which will be decided by the actual data set, throughout weekly, month, hours. To see the difference, I will show the histogram first and do the analysis.
 
 ```{r, echo= F}
 # Let's go with Monthly
@@ -98,8 +97,8 @@ plot_weekday
 plot_hour
 ```
 
-```
+
 There are three plots and we can easily tell that, accroding to th e plot, the difference of the number of calls is the most distingishable in hourly plots. We can assume that the hypothesis 'H0: there is no difference' would be rejected.
-```
+
 
 
