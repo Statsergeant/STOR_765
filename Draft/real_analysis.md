@@ -23,7 +23,7 @@ calls with several barplots.
 
 <img src="{{ https://github.com/Statsergeant/STOR_765/ }}{{ https://github.com/Statsergeant/STOR_765/tree/main/image/number_hourly_monthly_weekly.png">
 
-
+![aa] ('https://github.com/Statsergeant/STOR_765/tree/main/image/number_hourly_monthly_weekly.png')
 
 ### Spatial Analysis
 
