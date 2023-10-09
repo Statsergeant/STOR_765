@@ -21,13 +21,10 @@ columns. If I need to adjust NA values, I will mention it if necessary.
 First of all, we will see the glimpse of difference of the number of
 calls with several barplots.
 
-<img src="{{https://github.com/Statsergeant/STOR_765}}{{https://github.com/Statsergeant/STOR_765/tree/main/}}/image/number_hourly_monthly_weekly.png">
-
-
-
-![Book logo](/image/number_hourly_monthly_weekly.png)
+![Barplots](/image/number_hourly_monthly_weekly.png)
 
 ### Spatial Analysis
 
 Let’s see the hit map first to see what area has the most calls.
 
+![Mapview](/image/map_view.png)
