@@ -23,6 +23,10 @@ calls with several barplots.
 
 <img src="{{https://github.com/Statsergeant/STOR_765}}{{https://github.com/Statsergeant/STOR_765/tree/main/}}/image/number_hourly_monthly_weekly.png">
 
+
+
+![Book logo](/image/number_hourly_monthly_weekly.png)
+
 ### Spatial Analysis
 
 Let’s see the hit map first to see what area has the most calls.
