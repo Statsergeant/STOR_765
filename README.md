@@ -1,14 +1,16 @@
 # STOR_765_911_calls_ Detroit
 
-   Thanks for all the informations! ^^
-
 ### First draft : https://github.com/Statsergeant/STOR_765/blob/main/Draft/real_analysis.md 
 
 - Still needs to work on the hypothesis and explain more about this.
 
+------
 
 
-   @@ Meeting note : [Behavioral Health 911 Calls Notes - Google Docs](https://docs.google.com/document/d/18fq7AWVNhskYoM3dm362KyvO4PeQoHaOWQn040oQyCA/edit)
+
+Thanks for the information!!
+
+@@ Meeting note : [Behavioral Health 911 Calls Notes - Google Docs](https://docs.google.com/document/d/18fq7AWVNhskYoM3dm362KyvO4PeQoHaOWQn040oQyCA/edit)
 
 1. In the attached zip file, you will find:
 
