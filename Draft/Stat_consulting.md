@@ -35,10 +35,4 @@ columns. If I need to adjust NA values, I will mention it if necessary.
 First of all, we will see the glimpse of difference of the number of
 calls with several barplots.
 
-![Barplots](/image/number_hourly_monthly_weekly.png)
-
-### Spatial Analysis
-
-Let’s see the hit map first to see what area has the most calls.
-
-![Mapview](/image/map_view.png)
+<img src="aa_files/figure-gfm/setup-1.png" width="50%" /><img src="aa_files/figure-gfm/setup-2.png" width="50%" /><img src="aa_files/figure-gfm/setup-3.png" width="50%" />
