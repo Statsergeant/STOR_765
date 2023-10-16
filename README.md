@@ -1,6 +1,6 @@
 # STOR_765_911_calls_ Detroit
 
-### First draft : https://github.com/Statsergeant/STOR_765/blob/main/Draft/real_analysis.md 
+### First draft : https://github.com/Statsergeant/STOR_765/blob/main/Draft/Stat_consulting.md
 
 - Still needs to work on the hypothesis and explain more about this.
 
