@@ -1,0 +1,78 @@
+---
+title: "Untitled"
+output: github_document
+---
+
+```{r,include=F}
+library(tidyverse)
+library(data.table)
+library(skimr)
+library(gtsummary)
+library(readxl)
+library(sf)
+library(mapview)
+library(ggmap)
+```
+
+# Behavioral Health 911 Call Notes(Draft)
+
+## Instruction
+
+In real-life situations, people call 911 for various reasons, including accidents, violence, or fire emergencies. For our analysis, we will specifically focus on the call type 'Behavioral Health,' which can be categorized into 'Mental Health Crisis,' 'Suicidal Threats or Attempts,' or 'Emotional Distress.' The objective is to understand the characteristics of calls falling under this category.
+
+Firstly, we will concentrate on the distribution of 'Behavioral Health' calls over time, considering factors such as hours, months, and weekdays. This will provide insights into when these calls are more likely to occur.
+
+Secondly, employing spatial analysis, we aim to unveil patterns, trends, and relationships that may not be immediately apparent. This analysis will help in understanding the geographical aspects of 'Behavioral Health' calls, offering a comprehensive view beyond temporal considerations. 
+
+
+## Exploration data Analysis
+
+```{r, echo=F}
+data <- read_excel('detroit_analysis.xlsx') %>% as.data.frame()
+```
+
+Data consists of 48318 * 23 matrix and there are some NA values in some columns. If I need to adjust NA values, I will mention it if necessary.
+
+## Analyses
+
+### Time series of counts
+
+First of all, we will see the glimpse of difference of the number of calls with several barplots.
+
+```{r, echo= F}
+# Let's go with Monthly
+data_bar_month <- data %>% 
+  group_by(month) %>% 
+  summarise(sum = n())
+
+month_name <- c('Jan', 'Feb', 'Mar', 'Apr', "May", 'Jun', 
+            'Jul','Aug', 'Sep','Oct','Novr','Dec')
+
+data_bar_month <- cbind(data_bar_month, month_name) %>% as.data.frame()
+
+# This time weekday
+
+data_bar_weekday <- data %>% 
+  group_by(day_of_week) %>% 
+  summarize(sum = n())
+
+week<- c('Sun','Mon','Tues', 'Wedn', 'Thur','Fri', 'Sat')
+
+data_bar_weekday <- cbind(data_bar_weekday, week) %>% as.data.frame()
+
+# hourly
+data_bar_hour <- data %>% 
+  group_by(hour) %>% 
+  summarize(sum = n())
+```
+
+
+
+```{r setup, echo =F, out.width = '50%', fig.show = 'hold'}
+knitr::opts_chunk$set(echo = TRUE)
+ ggplot(data_bar_month, aes(x = factor(month_name),y = sum)) + geom_bar(stat= 'identity', fill = 'green') + labs(title = 'The bar graph of the number of call by monthly') + xlab(label = 'Month') + ylab(label = 'The number')
+
+ ggplot(data_bar_weekday, aes(x = factor(week),y = sum)) + geom_bar(stat= 'identity', fill = 'red') + labs(title = 'The bar graph of the number of call by weekday') + xlab(label = 'Weekday') + ylab(label = 'The number')
+
+ ggplot(data_bar_hour, aes(x = factor(hour),y = sum)) + geom_bar(stat= 'identity', fill = 'Yellow') + labs(title = 'The bar graph of the number of call by hour') + xlab(label = 'Hourly') + ylab(label = 'The number')
+```
