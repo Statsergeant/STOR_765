@@ -1,4 +1,4 @@
-Stat_consulting_765
+Stat_consulting
 ================
 
 # Behavioral Health 911 Call Notes(Draft)
@@ -35,4 +35,50 @@ columns. If I need to adjust NA values, I will mention it if necessary.
 First of all, we will see the glimpse of difference of the number of
 calls with several barplots.
 
-<img src="aa_files/figure-gfm/setup-1.png" width="50%" /><img src="aa_files/figure-gfm/setup-2.png" width="50%" /><img src="aa_files/figure-gfm/setup-3.png" width="50%" />
+![Barplots](/image/number_hourly_monthly_weekly.png)
+
+Based on the plots, we can see there are some difference of frequencies
+between each months, hours, and weekday. To see it is a statistically
+significant difference, I would like to use Chisq.test.
+
+``` r
+# chisq.test for month
+chisq.test(data_bar_month$sum , p = month_prop )
+```
+
+    ## 
+    ##  Chi-squared test for given probabilities
+    ## 
+    ## data:  data_bar_month$sum
+    ## X-squared = 348.52, df = 11, p-value < 2.2e-16
+
+``` r
+# chisq.test for month
+chisq.test(data_bar_weekday$sum , p = weekday_prop )
+```
+
+    ## 
+    ##  Chi-squared test for given probabilities
+    ## 
+    ## data:  data_bar_weekday$sum
+    ## X-squared = 31.597, df = 6, p-value = 1.95e-05
+
+``` r
+# chisq.test for month
+chisq.test(data_bar_hour$sum , p = hour_prop )
+```
+
+    ## 
+    ##  Chi-squared test for given probabilities
+    ## 
+    ## data:  data_bar_hour$sum
+    ## X-squared = 4800, df = 23, p-value < 2.2e-16
+
+### Spatial Analysis
+
+Let’s see the hit map first to see what area has the most calls.
+
+![Mapview](/image/map_view.png)
+
+
+
